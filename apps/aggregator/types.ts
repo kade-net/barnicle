@@ -21,3 +21,6 @@ export type EVENT_NAMES = 'RegisterUsernameEvent' |
     'MembershipDeleteEvent' |
     'MembershipReclaimEvent' |
     'CommunityUpdateEvent';
+
+
+export type EVENT_STATUS = "success" | "failed" | "skipped"
