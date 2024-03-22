@@ -1,0 +1,52 @@
+scalar Date
+scalar JSON
+
+type Profile {
+  creator: Int!
+  pfp: String
+  bio: String
+  display_name: String
+}
+
+type Username {
+  username: String!
+  owner_address: String!
+  token_address: String!
+  timestamp: Date!
+}
+
+type Account {
+  id: Int!
+  address: String!
+  object_address: String!
+  timestamp: Date!
+  profile: Profile
+  username: Username
+}
+
+type Collection {
+  supply: Int!
+  name: String!
+  description: String!
+  uri: String!
+  kade_collectors_count: Int!
+}
+
+input Pagination {
+  page: Int!
+  size: Int!
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+type Query {
+  collection(address: String!): Collection
+  collectors(
+    collection_address: String!
+    pagination: Pagination
+    sort: SortOrder
+  ): [Account!]
+}

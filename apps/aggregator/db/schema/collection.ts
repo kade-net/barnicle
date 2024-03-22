@@ -1,7 +1,6 @@
 
-import { account } from '@kade-net/oracle'
-import { relations } from 'drizzle-orm'
-import { pgTable, text } from 'drizzle-orm/pg-core'
+import { account, relations } from '@kade-net/oracle'
+import { pgTable, text } from '@kade-net/oracle/pg-core'
 
 
 export const collection = pgTable('collection', {
@@ -41,7 +40,7 @@ export const nft_relations = relations(nft, ({ one }) => {
         }),
         collector: one(account as any, {
             fields: [nft.collector],
-            references: [account.address as any],
+            references: [account.address],
             relationName: "collector",
         })
     }
