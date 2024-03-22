@@ -1,5 +1,5 @@
-import { drizzle, PostgresJsDatabase } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres'
+import { drizzle, PostgresJsDatabase } from '@kade-net/oracle/postgres-js';
+import postgres from '@kade-net/oracle/postgres'
 import * as schema from './schema'
 
 

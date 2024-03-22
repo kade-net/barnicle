@@ -8,7 +8,9 @@
     "tunnel:run": "ts-node --esm ./reader/tunnel-worker/main.ts",
     "generate": "drizzle-kit generate:pg",
     "migrate": "node ./db/migrate.js",
-    "trek:run": "ts-node --esm ./reader/aptos-trekker/main.ts"
+    "trek:run": "ts-node --esm ./reader/aptos-trekker/main.ts",
+    "harpoon:dev": "ts-node --esm ./harpoon/index.ts",
+    "all": "pnpm run tunnel:run & pnpm run trek:run & pnpm run harpoon:dev"
   },
   "keywords": [],
   "author": "",
@@ -22,11 +24,14 @@
     "tsup": "^8.0.2"
   },
   "dependencies": {
+    "@apollo/server": "^4.10.1",
     "@aptos-labs/ts-sdk": "^1.10.0",
-    "@kade-net/oracle": "^0.0.1",
+    "@kade-net/oracle": "^0.0.7",
     "@kade-net/tunnel": "^0.0.2",
     "dayjs": "^1.11.10",
     "drizzle-orm": "^0.30.4",
+    "graphql": "^16.8.1",
+    "graphql-type-json": "^0.3.2",
     "lodash": "^4.17.21",
     "node-lmdb": "^0.10.0",
     "postgres": "^3.4.3"

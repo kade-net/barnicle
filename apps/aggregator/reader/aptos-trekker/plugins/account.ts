@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq } from "@kade-net/oracle";
 import aptos from "../../../aptos";
 import db from "../../../db";
 import { collection, nft as nftTable } from "../../../db/schema";
