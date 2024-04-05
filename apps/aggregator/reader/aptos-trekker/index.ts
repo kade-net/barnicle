@@ -21,14 +21,12 @@ export class AptosTrekker {
     }
 
     async start() {
-        const last_offset = await this.monitor.getLastAccountReadOffset()
+        // const last_offset = await this.monitor.getLastAccountReadOffset()
 
         const accounts = await oracle.query.account.findMany({
             columns: {
                 address: true
             },
-            offset: last_offset,
-            limit: Monitor.OFFSET_BY,
             orderBy: asc(account.timestamp)
         })
 
@@ -36,7 +34,7 @@ export class AptosTrekker {
             try {
                 console.log("Processing account::", account.address)
                 await this.accounts.process(account.address, this.monitor)
-                await this.monitor.setLastAccountReadOffset(last_offset + (accounts.length ?? 0))
+                // await this.monitor.setLastAccountReadOffset(last_offset + (accounts.length ?? 0))
             }
             catch (e) {
                 console.log("Error processing account::", e)
