@@ -1,4 +1,4 @@
-import { ACCOUNT, account, asc, count, desc, eq } from "@kade-net/oracle"
+import { ACCOUNT, account, asc, count, countDistinct, desc, eq } from "@kade-net/oracle"
 import { Context, PaginationArg, Resolver, SORT_ORDER } from "../../../types"
 import { nft } from "../../../db/schema"
 
@@ -33,7 +33,7 @@ export const resolvers: ResolverMap = {
             if (!collection) throw new Error("Collection not found")
 
             const collectors = await db.selectDistinct({
-                collectors: count(nft.collector)
+                collectors: countDistinct(nft.collector)
             }).from(nft)
                 .where(eq(nft.collection, address))
 
