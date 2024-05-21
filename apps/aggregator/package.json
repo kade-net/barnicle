@@ -6,11 +6,16 @@
   "type": "module",
   "scripts": {
     "tunnel:run": "ts-node --esm ./reader/tunnel-worker/main.ts",
+    "tunnel": "node ./dist/reader/tunnel-worker/main.js",
     "generate": "drizzle-kit generate:pg",
     "migrate": "node ./db/migrate.js",
     "trek:run": "ts-node --esm ./reader/aptos-trekker/main.ts",
+    "trek": "node ./dist/reader/aptos-trekker/main.js",
     "harpoon:dev": "ts-node --esm ./harpoon/index.ts",
-    "all": "pnpm run tunnel:run & pnpm run trek:run & pnpm run harpoon:dev"
+    "harpoon": "node ./dist/harpoon/index.js",
+    "all": "pnpm run tunnel:run & pnpm run trek:run & pnpm run harpoon:dev",
+    "build": "rm -rf ./dist && tsup",
+    "start": "pnpm run tunnel & pnpm run trek & pnpm run harpoon"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +23,6 @@
   "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/node": "^20.11.30",
-    "dotenv": "^16.4.5",
     "drizzle-kit": "^0.20.14",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2"
@@ -34,6 +38,7 @@
     "graphql-type-json": "^0.3.2",
     "lodash": "^4.17.21",
     "node-lmdb": "^0.10.0",
-    "postgres": "^3.4.3"
+    "postgres": "^3.4.3",
+    "dotenv": "^16.4.5"
   }
 }
